@@ -1,0 +1,26 @@
+{
+  "name": "backburner",
+  "version": "0.0.0",
+  "description": "linux desktop background composer",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./spec/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/lucaswadedavis/backburner"
+  },
+  "keywords": [
+    "linux",
+    "desktop",
+    "background"
+  ],
+  "author": "Lucas Wade Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucaswadedavis/backburner/issues"
+  },
+  "dependencies": {
+    "linux-wallpaper": "~0.1.0"
+  }
+}
