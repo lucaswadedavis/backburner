@@ -1,37 +1,26 @@
 var linuxWallpaper = require('linux-wallpaper');
+var fs = require('fs');
+var Canvas = require('canvas');
+
 var backburner = {};
-var path = "./images/WeAreNotTakingTheWizard.jpg"
-path = "./wallpaper.png";
+var path = "./wallpaper.png";
 var screen = {width:1366, height: 760};
 
-var Canvas = require('canvas')
-  , Image = Canvas.Image
-    , canvas = new Canvas(screen.width,screen.height)
-	  , ctx = canvas.getContext('2d');
+var Image = Canvas.Image;
+var canvas = new Canvas(screen.width,screen.height);
+var ctx = canvas.getContext('2d');	   
+	ctx.font = '30px Impact';
+	ctx.fillText("Backburner!", screen.width/2, screen.height/2);
+	ctx.strokeStyle = 'rgba(0,0,0,0.5)';
 	   
-	  ctx.font = '30px Impact';
-	  //ctx.rotate(.1);
-	  ctx.fillText("Awesome!", screen.width/2, screen.height/2);
-	   
-	  var te = ctx.measureText('Backburner!');
-	  ctx.strokeStyle = 'rgba(0,0,0,0.5)';
-	  ctx.beginPath();
-	  ctx.lineTo(50, 102);
-	  ctx.lineTo(50 + te.width, 102);
-	  ctx.stroke();
-	   
-	  //console.log('<img src="' + canvas.toDataURL() + '" />');
-
-	  var fs = require('fs')
-	    , out = fs.createWriteStream(__dirname + '/wallpaper.png')
-	      , stream = canvas.pngStream();
+var out = fs.createWriteStream(__dirname + '/wallpaper.png');
+var stream = canvas.pngStream();
 	       
-	      stream.on('data', function(chunk){
-		        out.write(chunk);
-	      });
+stream.on('data', function(chunk){
+	 out.write(chunk);
+});
  
 stream.on('end', function(){
-	  console.log('saved png');
 	linuxWallpaper.set(path,function(err){
 		if(err){
 			console.log(err);
@@ -41,14 +30,4 @@ stream.on('end', function(){
 	});
 });
 
-/*
-linuxWallpaper.set(path,function(err){
-	if (err){
-		console.log(err);
-	} else {
-		console.log("background changed");
-	}
-});
 
-*/
-module.exports = backburner;
