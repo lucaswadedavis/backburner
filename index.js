@@ -4,6 +4,7 @@ var fs = require('fs');
 var Canvas = require('canvas');
 var Chance = require('chance');
 var paper = require('paper');
+var mandalaTime = require('./mandala-time.js');
 
 var backburner = {};
 var path = "./wallpaper.png";
@@ -12,11 +13,9 @@ var screen = {width:1366, height: 760};
 
 var Image = Canvas.Image;
 var canvas = new Canvas(screen.width,screen.height);
-var ctx = canvas.getContext('2d');	   
-ctx.font = '100px Impact';
-ctx.fillText("Backburner!", screen.width/2, screen.height/2);
-ctx.strokeStyle = 'rgba(0,0,0,0.5)';
-	   
+mandalaTime.initPaper(canvas);
+
+
 var out = fs.createWriteStream(__dirname + '/wallpaper.png');
 var stream = canvas.pngStream();
 	       

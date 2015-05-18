@@ -2,25 +2,16 @@ var Chance = require('chance');
 var paper = require('paper');
 var m = {};
 
-var initBounds=function(){
-	var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    x = w.innerWidth || e.clientWidth || g.clientWidth,
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-  var b={};
-  b.right=x-20;
-  b.left=0;
-  b.top=0;
-  b.bottom=y;
-  b.centerX=b.right/2;
-  b.centerY=b.bottom/2;
-  b.width=b.right-b.left;
-  b.height=b.bottom-b.top;
+var geo={};
 
-  return b;
-};
+geo.getPoint=function(x,y,r,theta){
+	theta+=90;
+	theta=theta*(Math.PI/180);
+	var x2=x+(r*Math.sin(theta));
+	var y2=y+(r*Math.cos(theta));
+	var circle={x1:x,y1:y,r:r,x2:x2,y2:y2};
+	return circle;
+	};
 
 m.drawMandala=function(date){
   var d=new Date();
@@ -28,7 +19,7 @@ m.drawMandala=function(date){
   //var chnc=new Chance();
   paper.project.clear();
   var strokeWidth=1;
-  var strokeColor="#fff";
+  var strokeColor="#333";
 	var circle=function(x,y,r){
 		var path = new paper.Path.Circle({
     	//center: paper.view.center,
@@ -106,9 +97,7 @@ m.drawMandala=function(date){
 	paper.view.draw();
 };
 
-m.initPaper=function(){
-  var canvas = document.getElementById('paper');
-  //var chnc = new Chance();
+m.initPaper=function(canvas){
 	paper.setup(canvas);
 	m.drawMandala();
 	paper.view.onResize=function(event){
@@ -116,6 +105,5 @@ m.initPaper=function(){
 	  paper.view.draw();
 	};
 };
-
 
 module.exports = m;
