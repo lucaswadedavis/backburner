@@ -21,6 +21,8 @@
     "url": "https://github.com/lucaswadedavis/backburner/issues"
   },
   "dependencies": {
-    "linux-wallpaper": "~0.1.0"
+    "linux-wallpaper": "~0.1.0",
+    "chance": "~0.7.5",
+    "paper": "~0.9.22"
   }
 }
