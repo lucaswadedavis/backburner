@@ -19,7 +19,7 @@ m.drawMandala=function(date){
   //var chnc=new Chance();
   paper.project.clear();
   var strokeWidth=1;
-  var strokeColor="#333";
+  var strokeColor="#555";
 	var circle=function(x,y,r){
 		var path = new paper.Path.Circle({
     	//center: paper.view.center,

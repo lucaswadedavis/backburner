@@ -7,8 +7,8 @@ var paper = require('paper');
 var mandalaTime = require('./mandala-time.js');
 
 var backburner = {};
-var path = "./wallpaper.png";
-var screen = {width:1366, height: 760};
+var path = __dirname + "/wallpaper.png";
+var screen = {width:1366, height: 730};
 
 
 var Image = Canvas.Image;
